@@ -25,8 +25,6 @@ android {
     defaultConfig {
         minSdkVersion library_min_version
         targetSdkVersion library_target_version
-        versionCode library_version_code
-        versionName library_version
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -39,9 +37,6 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -51,6 +46,10 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+    namespace 'com.tonyodev.fetch2fileserver'
+    lint {
+        abortOnError false
     }
 }
 
