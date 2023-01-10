@@ -1,1 +1,17 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+}
+rootProject.name = "FarFetch"
 include ':sampleApp', ':fetch2core', ':fetch2okhttp', ":fetch2", ":fetch2rx", ":fetchmigrator", ":fetch2fileserver"

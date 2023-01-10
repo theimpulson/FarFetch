@@ -1,20 +1,7 @@
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
-buildscript {
-    apply from: '../versions.gradle'
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_tools_version"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//        classpath "com.novoda:bintray-release:$novoda_bintray_version"
-    }
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.android.extensions'
 }
 
 android {
@@ -33,10 +20,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-
-        debug {
-
-        }
     }
 
     compileOptions {
@@ -48,15 +31,15 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$android_support_version"
-    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
-    implementation "com.android.support:design:$android_support_version"
-    implementation "com.android.support:recyclerview-v7:$android_support_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid2_version"
-    implementation "io.reactivex.rxjava2:rxjava:$rxJava2_version"
-    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.kotlin_version"
+    implementation "com.android.support:appcompat-v7:$project.android_support_version"
+    implementation "com.android.support.constraint:constraint-layout:$project.constraint_layout_version"
+    implementation "com.android.support:design:$project.android_support_version"
+    implementation "com.android.support:recyclerview-v7:$project.android_support_version"
+    implementation "com.squareup.okhttp3:okhttp:$project.okhttp_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroid2_version"
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJava2_version"
+    implementation "com.jakewharton.timber:timber:$project.timber_version"
 
     implementation project(':fetch2okhttp')
     implementation project(':fetch2rx')
@@ -64,7 +47,7 @@ dependencies {
     implementation project(':fetchmigrator')
     implementation project(':fetch2fileserver')
 
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "com.android.support.test:runner:$test_runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    testImplementation "junit:junit:$project.junit_version"
+    androidTestImplementation "com.android.support.test:runner:$project.test_runner_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.espresso_version"
 }

@@ -1,22 +1,7 @@
-apply plugin: 'com.android.library'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-kapt'
-
-//apply plugin: 'com.novoda.bintray-release'
-
-buildscript {
-    apply from: '../versions.gradle'
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_tools_version"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//        classpath "com.novoda:bintray-release:$novoda_bintray_version"
-    }
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
 }
 
 android {
@@ -27,7 +12,6 @@ android {
         targetSdkVersion library_target_version
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -36,7 +20,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -55,27 +38,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$android_support_version"
-    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
-    api "android.arch.persistence.room:runtime:$room_version"
+    implementation "com.android.support:appcompat-v7:$project.android_support_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
+    kapt "android.arch.persistence.room:compiler:$project.room_version"
+    api "android.arch.persistence.room:runtime:$project.room_version"
 
     api project(':fetch2core')
 
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "com.android.support.test:runner:$test_runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
-}
-
-//publish {
-//    userOrg = 'tonyofrancis'
-//    groupId = 'com.tonyodev.fetch2fileserver'
-//    artifactId = 'fetch2fileserver'
-//    publishVersion = library_version
-//    desc = 'Fetch File Server'
-//    website = 'https://github.com/tonyofrancis/fetch'
-//}
-
-tasks.withType(Javadoc).all {
-    enabled = false
+    testImplementation "junit:junit:$project.junit_version"
+    androidTestImplementation "com.android.support.test:runner:$project.test_runner_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.espresso_version"
 }
