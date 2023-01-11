@@ -14,4 +14,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "FarFetch"
-include ':sampleApp', ':fetch2core', ':fetch2okhttp', ":fetch2", ":fetch2rx", ":fetchmigrator", ":fetch2fileserver"
+include ':fetch2core'
