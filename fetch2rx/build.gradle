@@ -41,7 +41,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
     api "io.reactivex.rxjava2:rxandroid:$project.rxAndroid2_version"
     api "io.reactivex.rxjava2:rxjava:$project.rxJava2_version"
     api project(':fetch2')

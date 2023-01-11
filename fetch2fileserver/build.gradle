@@ -42,7 +42,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$project.android_support_version"
-    api "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
     kapt "android.arch.persistence.room:compiler:$project.room_version"
     api "android.arch.persistence.room:runtime:$project.room_version"
 

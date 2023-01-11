@@ -42,7 +42,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
     api "com.squareup.okhttp3:okhttp:$project.okhttp_version"
     api "com.squareup.okhttp3:okhttp-urlconnection:$project.okhttp_url_version"
     api project(':fetch2core')

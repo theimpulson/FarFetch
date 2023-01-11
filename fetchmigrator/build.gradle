@@ -41,7 +41,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
     api project(':fetch2')
 
     testImplementation "junit:junit:$project.junit_version"

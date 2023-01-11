@@ -42,7 +42,6 @@ android {
 
 dependencies {
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
     kapt "android.arch.persistence.room:compiler:$project.room_version"
     api "android.arch.persistence.room:runtime:$project.room_version"
     api project(':fetch2core')

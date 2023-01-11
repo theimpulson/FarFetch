@@ -42,7 +42,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
     testImplementation "junit:junit:$project.junit_version"
     androidTestImplementation "com.android.support.test:runner:$project.test_runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.espresso_version"
