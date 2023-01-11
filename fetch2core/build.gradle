@@ -10,8 +10,6 @@ android {
     defaultConfig {
         minSdkVersion library_min_version
         targetSdkVersion library_target_version
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -29,20 +27,8 @@ android {
         jvmTarget = '11'
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        androidTest.java.srcDirs += 'src/androidTest/kotlin'
-    }
     namespace 'com.tonyodev.fetch2core'
     lint {
         abortOnError false
     }
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    testImplementation "junit:junit:$project.junit_version"
-    androidTestImplementation "com.android.support.test:runner:$project.test_runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$project.espresso_version"
 }
