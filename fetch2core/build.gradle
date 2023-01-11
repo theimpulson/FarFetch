@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace 'dev.theimpulson.fetch2core'
     compileSdkVersion library_compile_version
 
     defaultConfig {
@@ -27,7 +28,6 @@ android {
         jvmTarget = '11'
     }
 
-    namespace 'com.tonyodev.fetch2core'
     lint {
         abortOnError false
     }
