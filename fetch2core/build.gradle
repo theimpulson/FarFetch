@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace 'dev.theimpulson.fetch2core'
-    compileSdkVersion library_compile_version
+    compileSdk library_compile_version
 
     defaultConfig {
-        minSdkVersion library_min_version
-        targetSdkVersion library_target_version
+        minSdk library_min_version
+        targetSdk library_target_version
     }
 
     buildTypes {
