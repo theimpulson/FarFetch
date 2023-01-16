@@ -15,6 +15,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.net.Socket
 import java.net.SocketAddress
+import java.util.*
 
 class FetchFileResourceTransporter(private val client: Socket = Socket()) : FileResourceTransporter {
 
@@ -114,7 +115,7 @@ class FetchFileResourceTransporter(private val client: Socket = Socket()) : File
         return synchronized(lock) {
             throwExceptionIfClosed()
             throwIfNotConnected()
-            val json = JSONObject(dataInput.readUTF().toLowerCase())
+            val json = JSONObject(dataInput.readUTF().lowercase(Locale.getDefault()))
             val status = json.getInt(FIELD_STATUS)
             val requestType = json.getInt(FIELD_TYPE)
             val connection = json.getInt(FIELD_CONNECTION)

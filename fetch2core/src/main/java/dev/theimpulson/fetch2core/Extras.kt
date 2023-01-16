@@ -176,7 +176,17 @@ open class Extras(
 
         @Suppress("UNCHECKED_CAST")
         override fun createFromParcel(source: Parcel): Extras {
-            return Extras(source.readSerializable() as HashMap<String, String>)
+            return if (Platform.isTAndAbove()) {
+                Extras(
+                    source.readSerializable(
+                        null,
+                        HashMap::class.java
+                    ) as HashMap<String, String>
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                Extras(source.readSerializable() as HashMap<String, String>)
+            }
         }
 
         override fun newArray(size: Int): Array<Extras?> {

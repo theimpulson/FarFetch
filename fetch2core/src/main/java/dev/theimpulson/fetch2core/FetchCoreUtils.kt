@@ -12,6 +12,7 @@ import java.net.CookiePolicy
 import java.net.HttpURLConnection
 import java.security.DigestInputStream
 import java.security.MessageDigest
+import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -289,7 +290,8 @@ fun acceptRanges(
     )
     val contentLength = getContentLengthFromHeader(headers, -1L)
     val acceptsRanges = code == HttpURLConnection.HTTP_PARTIAL || acceptRangeValue == "bytes"
-    return (contentLength > -1L && acceptsRanges) || (contentLength > -1L && transferValue?.toLowerCase() != "chunked")
+    return (contentLength > -1L && acceptsRanges)
+            || (contentLength > -1L && transferValue?.lowercase(Locale.getDefault()) != "chunked")
 }
 
 fun getContentLengthFromHeader(headers: Map<String, List<String>>, defaultValue: Long): Long {

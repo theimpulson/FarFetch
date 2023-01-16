@@ -110,7 +110,17 @@ open class MutableExtras(protected val mutableData: MutableMap<String, String> =
 
         @Suppress("UNCHECKED_CAST")
         override fun createFromParcel(source: Parcel): MutableExtras {
-            return MutableExtras((source.readSerializable() as HashMap<String, String>).toMutableMap())
+            return if (Platform.isTAndAbove()) {
+                MutableExtras(
+                    (source.readSerializable(
+                        null,
+                        HashMap::class.java
+                    ) as HashMap<String, String>).toMutableMap()
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                MutableExtras((source.readSerializable() as HashMap<String, String>).toMutableMap())
+            }
         }
 
         override fun newArray(size: Int): Array<MutableExtras?> {

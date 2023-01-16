@@ -3,6 +3,7 @@ package dev.theimpulson.fetch2core.server
 import android.os.Parcel
 import android.os.Parcelable
 import dev.theimpulson.fetch2core.Extras
+import dev.theimpulson.fetch2core.Platform
 import java.io.Serializable
 import java.lang.StringBuilder
 
@@ -84,7 +85,12 @@ data class FileRequest(val type: Int = TYPE_INVALID,
                     rangeEnd = source.readLong(),
                     authorization = source.readString() ?: "",
                     client = source.readString() ?: "",
-                    extras = Extras(source.readSerializable() as HashMap<String, String>),
+                    extras = if (Platform.isTAndAbove()) {
+                        Extras(source.readSerializable(null, HashMap::class.java) as HashMap<String, String>)
+                    } else {
+                        @Suppress("DEPRECATION")
+                        Extras(source.readSerializable() as HashMap<String, String>)
+                    },
                     page = source.readInt(),
                     size = source.readInt(),
                     persistConnection = source.readInt() == 1)

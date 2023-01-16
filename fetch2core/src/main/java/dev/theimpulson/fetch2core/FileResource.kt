@@ -90,7 +90,18 @@ class FileResource : Parcelable, Serializable {
             fileResource.name = source.readString() ?: ""
             fileResource.length = source.readLong()
             fileResource.file = source.readString() ?: ""
-            fileResource.extras = Extras(source.readSerializable() as HashMap<String, String>)
+            if (Platform.isTAndAbove()) {
+                fileResource.extras = Extras(
+                    source.readSerializable(
+                        null,
+                        HashMap::class.java
+                    ) as HashMap<String, String>
+                )
+            } else {
+                fileResource.extras =
+                    @Suppress("DEPRECATION")
+                    Extras(source.readSerializable() as HashMap<String, String>)
+            }
             fileResource.md5 = source.readString() ?: ""
             return fileResource
         }
